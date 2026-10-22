@@ -21,7 +21,7 @@ export default function Hero({ onBook, onVideo }) {
           </h1>
 
           <p className="hero__desc">
-            At Antixor Restaurant, we bring together fresh ingredients, creative recipes and a cozy
+            At StarPlus Restaurant, we bring together fresh ingredients, creative recipes and a cozy
             atmosphere to give you an unforgettable dining experience.
           </p>
 
@@ -46,7 +46,7 @@ export default function Hero({ onBook, onVideo }) {
             <div className="hero__photo">
               <img
                 src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80"
-                alt="Antixor Signature Grilled Meat Platter with Rosemary"
+                alt="StarPlus Signature Grilled Meat Platter with Rosemary"
               />
             </div>
 

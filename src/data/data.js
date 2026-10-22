@@ -16,7 +16,8 @@ export const popularMeals = [
     price: 16.0,
     rating: 5.0,
     reviews: 218,
-    img: 'https://images.unsplash.com/photo-1621996346565-e3d5d62816ef?auto=format&fit=crop&w=600&q=80',
+    // FIXED: old photo-1621996346565-e3d5d62816ef was not loading
+    img: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80',
     desc: 'Hand-rolled artisanal tagliolini infused with black winter truffle, aged parmesan, and butter emulsion.',
   },
   {
@@ -71,7 +72,8 @@ export const signatureCategories = [
 export const galleryPhotos = [
   {
     title: 'Artisanal Pasta Creation',
-    src: 'https://images.unsplash.com/photo-1621996346565-e3d5d62816ef?auto=format&fit=crop&w=600&q=80',
+    // FIXED: old photo-1621996346565-e3d5d62816ef was not loading
+    src: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80',
     tag: 'Fresh Cuisine',
   },
   {

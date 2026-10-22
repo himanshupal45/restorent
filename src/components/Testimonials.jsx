@@ -9,7 +9,7 @@ export default function Testimonials() {
       <div className="container">
         <div className="testi__head">
           <span className="eyebrow light">Testimonials</span>
-          <h2 className="section-title testi__title">What Our Guests Say</h2>
+          <h2 className="testi__title">What Our Guests Say</h2>
           <p>Real experiences. Real people. Real love.</p>
         </div>
 

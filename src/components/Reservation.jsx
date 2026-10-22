@@ -21,7 +21,7 @@ export default function Reservation({ resData, setResData, onSubmit }) {
           <div className="reserve__visual">
             <img
               src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80"
-              alt="Romantic candlelit table at Antixor"
+              alt="Romantic candlelit table at StarPlus"
             />
             <div className="reserve__caption">
               <div>

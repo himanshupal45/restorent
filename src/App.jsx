@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { popularMeals } from './data/data';
 
-import Toast from './components/Toast';
+// Components
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import Menu from './components/Menu';
-import About from './components/About';
-import Gallery from './components/Gallery';
-import Popular from './components/Popular';
-import Chef from './components/Chef';
-import WhyChoose from './components/WhyChoose';
-import Testimonials from './components/Testimonials';
-import Reservation from './components/Reservation';
-import CtaBanner from './components/CtaBanner';
-import Footer from './components/Footer';
+import Toast from './components/Toast';
 import VideoModal from './components/VideoModal';
 import GalleryModal from './components/GalleryModal';
 import ReservationModal from './components/ReservationModal';
 import CartDrawer from './components/CartDrawer';
+
+// Pages
+import HomePage from './pages/HomePage/HomePage';
+import MenuPage from './pages/MenuPage/MenuPage';
+import AboutPage from './pages/AboutPage/AboutPage';
+import GalleryPage from './pages/GalleryPage/GalleryPage';
+import ContactPage from './pages/ContactPage/ContactPage';
+import ComingSoon from './pages/ComingSoon/ComingSoon';
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -70,68 +68,91 @@ export default function App() {
   const handleReservationSubmit = (e) => {
     e.preventDefault();
     setReservationModalOpen(false);
-    triggerToast(`Table successfully reserved for ${resData.guests} on ${resData.date} at ${resData.time}!`);
+    triggerToast(
+      `Table successfully reserved for ${resData.guests} on ${resData.date} at ${resData.time}!`
+    );
   };
 
   const openBooking = () => setReservationModalOpen(true);
   const cartCount = cartItems.reduce((s, i) => s + i.qty, 0);
 
   return (
-    <div className="app">
-      <Toast show={showToast} message={toastMessage} onClose={() => setShowToast(false)} />
+    <Router>
+      <div className="app">
+        <Toast show={showToast} message={toastMessage} onClose={() => setShowToast(false)} />
 
-      <Navbar
-        cartCount={cartCount}
-        onCart={() => setCartOpen(true)}
-        onBook={openBooking}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-      <Hero onBook={openBooking} onVideo={() => setVideoModalOpen(true)} />
-      <Features />
-      <Menu onCategory={(t) => triggerToast(`Browsing ${t} selection`)} />
-      <About onBook={openBooking} onVideo={() => setVideoModalOpen(true)} />
-      <Gallery onOpen={setActiveGalleryModal} onNav={triggerToast} />
-      <Popular
-        meals={popularMeals}
-        searchQuery={searchQuery}
-        onAdd={addToCart}
-        onNav={triggerToast}
-      />
-      <Chef onBook={openBooking} />
-      <WhyChoose />
-      <Testimonials />
-      <Reservation resData={resData} setResData={setResData} onSubmit={handleReservationSubmit} />
-      <CtaBanner onBook={openBooking} />
-      <Footer />
+        <Navbar
+          cartCount={cartCount}
+          onCart={() => setCartOpen(true)}
+          onBook={openBooking}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
 
-      {videoModalOpen && <VideoModal onClose={() => setVideoModalOpen(false)} />}
-      {activeGalleryModal && (
-        <GalleryModal
-          photo={activeGalleryModal}
-          onClose={() => setActiveGalleryModal(null)}
-          onBook={() => {
-            setActiveGalleryModal(null);
-            openBooking();
-          }}
-        />
-      )}
-      {reservationModalOpen && (
-        <ReservationModal
-          resData={resData}
-          setResData={setResData}
-          onSubmit={handleReservationSubmit}
-          onClose={() => setReservationModalOpen(false)}
-        />
-      )}
-      {cartOpen && (
-        <CartDrawer
-          items={cartItems}
-          onClose={() => setCartOpen(false)}
-          onQty={changeQty}
-          onCheckout={checkout}
-        />
-      )}
-    </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                onBook={openBooking}
+                onVideo={() => setVideoModalOpen(true)}
+                onAddCart={addToCart}
+                onGalleryOpen={setActiveGalleryModal}
+                onToast={triggerToast}
+                resData={resData}
+                setResData={setResData}
+                onReservationSubmit={handleReservationSubmit}
+              />
+            }
+          />
+          <Route
+            path="/menu"
+            element={
+              <MenuPage onAddCart={addToCart} onToast={triggerToast} searchQuery={searchQuery} />
+            }
+          />
+          <Route
+            path="/about"
+            element={<AboutPage onBook={openBooking} onVideo={() => setVideoModalOpen(true)} />}
+          />
+          <Route
+            path="/gallery"
+            element={<GalleryPage onOpen={setActiveGalleryModal} onToast={triggerToast} />}
+          />
+          <Route path="/contact" element={<ContactPage onBook={openBooking} />} />
+          <Route path="/coming-soon" element={<ComingSoon />} />
+        </Routes>
+
+        {videoModalOpen && <VideoModal onClose={() => setVideoModalOpen(false)} />}
+        {activeGalleryModal && (
+          <GalleryModal
+            photo={activeGalleryModal}
+            onClose={() => setActiveGalleryModal(null)}
+            onBook={() => {
+              setActiveGalleryModal(null);
+              openBooking();
+            }}
+          />
+        )}
+        {reservationModalOpen && (
+          <ReservationModal
+            resData={resData}
+            setResData={setResData}
+            onSubmit={handleReservationSubmit}
+            onClose={() => setReservationModalOpen(false)}
+          />
+        )}
+        {cartOpen && (
+          <CartDrawer
+            items={cartItems}
+            onClose={() => setCartOpen(false)}
+            onQty={changeQty}
+            onCheckout={checkout}
+          />
+        )}
+      </div>
+    </Router>
   );
 }

@@ -14,7 +14,7 @@ export default function ReservationModal({ resData, setResData, onSubmit, onClos
         </button>
 
         <div className="modal__header">
-          <span>Antixor Experience</span>
+          <span>StarPlus Experience</span>
           <h3>Book Your Table</h3>
           <p>Instant reservation with immediate table allocation</p>
         </div>

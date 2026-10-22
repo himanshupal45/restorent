@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import { Search, ShoppingBag, Menu as MenuIcon, X } from 'lucide-react';
 import '../styles/Navbar.css';
 
 const links = [
-  { href: '#home', label: 'Home' },
-  { href: '#menu', label: 'Menu' },
-  { href: '#about', label: 'About' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#contact', label: 'Contact' },
+  { to: '/', label: 'Home' },
+  { to: '/menu', label: 'Menu' },
+  { to: '/about', label: 'About' },
+  { to: '/gallery', label: 'Gallery' },
+  { to: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar({ cartCount, onCart, onBook, searchQuery, setSearchQuery }) {
@@ -17,7 +18,7 @@ export default function Navbar({ cartCount, onCart, onBook, searchQuery, setSear
   return (
     <header className="navbar">
       <div className="container navbar__inner">
-        <a href="#home" className="navbar__logo">
+        <Link to="/" className="navbar__logo">
           <div className="navbar__emblem">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
               <path d="M12 2L14.4 7.2L20 8L16 12L17 18L12 15.2L7 18L8 12L4 8L9.6 7.2L12 2Z" opacity="0.3" />
@@ -25,21 +26,31 @@ export default function Navbar({ cartCount, onCart, onBook, searchQuery, setSear
             </svg>
           </div>
           <div className="navbar__brand">
-            <span className="navbar__name">Antixor</span>
+            <span className="navbar__name">StarPlus</span>
             <span className="navbar__sub">Restaurant</span>
           </div>
-        </a>
+        </Link>
 
         <nav className="navbar__links">
-          {links.map((l, i) => (
-            <a key={l.href} href={l.href} className={i === 0 ? 'active' : ''}>
+          {links.map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.to === '/'}
+              className={({ isActive }) => (isActive ? 'active' : '')}
+              onClick={() => setMobileOpen(false)}
+            >
               {l.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
         <div className="navbar__actions">
-          <button className="navbar__icon-btn" onClick={() => setSearchOpen(!searchOpen)} title="Search menu">
+          <button
+            className="navbar__icon-btn"
+            onClick={() => setSearchOpen(!searchOpen)}
+            title="Search menu"
+          >
             <Search size={16} />
           </button>
           <button className="navbar__icon-btn navbar__cart" onClick={onCart} title="View Cart">
@@ -83,10 +94,16 @@ export default function Navbar({ cartCount, onCart, onBook, searchQuery, setSear
 
       {mobileOpen && (
         <div className="navbar__mobile-menu">
-          {links.map((l, i) => (
-            <a key={l.href} href={l.href} onClick={() => setMobileOpen(false)} className={i === 0 ? 'active' : ''}>
+          {links.map((l) => (
+            <NavLink
+              key={l.to}
+              to={l.to}
+              end={l.to === '/'}
+              onClick={() => setMobileOpen(false)}
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
               {l.label}
-            </a>
+            </NavLink>
           ))}
           <button
             className="btn btn-gold navbar__mobile-book"

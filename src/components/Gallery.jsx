@@ -11,7 +11,7 @@ export default function Gallery({ onOpen, onNav }) {
           <div>
             <span className="eyebrow">Our Gallery</span>
             <h2 className="section-title gallery__title">Moments of Good Food</h2>
-            <p>A glimpse of the delicious moments at Antixor.</p>
+            <p>A glimpse of the delicious moments at StarPlus.</p>
           </div>
           <div className="gallery__nav">
             <button onClick={() => onNav('Browsing earlier gallery memories')} aria-label="Previous gallery slides">

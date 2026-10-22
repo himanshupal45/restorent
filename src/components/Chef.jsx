@@ -8,7 +8,7 @@ export default function Chef({ onBook }) {
       <div className="container chef__inner">
         <div className="chef__content">
           <span className="eyebrow light">Meet Our Chef</span>
-          <h2 className="section-title chef__title">Passion in Every Plate</h2>
+          <h2 className="chef__title">Passion in Every Plate</h2>
           <p>
             Our chefs bring years of experience and a deep love for food, creating dishes that are both
             beautiful and delicious.

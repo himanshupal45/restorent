@@ -15,7 +15,7 @@ export default function About({ onBook, onVideo }) {
         <div className="about__visual">
           <img
             src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
-            alt="Antixor Restaurant Interior and warm lighting"
+            alt="StarPlus Restaurant Interior and warm lighting"
           />
           <div className="about__shade" />
           <div className="about__ribbon">
@@ -30,10 +30,10 @@ export default function About({ onBook, onVideo }) {
         </div>
 
         <div className="about__content">
-          <span className="eyebrow light">About Antixor</span>
-          <h2 className="section-title about__title">Our Story</h2>
+          <span className="eyebrow light">About StarPlus</span>
+          <h2 className="about__title">Our Story</h2>
           <p className="about__text">
-            Antixor Restaurant was born from a simple idea – that great food brings people together. We
+            StarPlus Restaurant was born from a simple idea – that great food brings people together. We
             combine fresh, seasonal ingredients with creative recipes to create memorable dining
             experiences.
           </p>

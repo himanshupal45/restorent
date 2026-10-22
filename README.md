@@ -1,4 +1,4 @@
-# Antixor Restaurant – React + Vite
+# StarPlus Restaurant – React + Vite
 
 ## Run karne ka tarika
 ```bash
@@ -9,7 +9,7 @@ npm run build    # production build (dist/ folder)
 
 ## Folder structure
 ```
-antixor-restaurant/
+StarPlus-restaurant/
 ├── index.html
 ├── package.json
 ├── vite.config.js

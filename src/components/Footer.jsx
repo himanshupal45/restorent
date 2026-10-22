@@ -29,7 +29,7 @@ export default function Footer() {
           <div className="footer__brand">
             <div className="footer__logo">
               <div className="footer__logo-mark">A</div>
-              <span>Antixor</span>
+              <span>StarPlus</span>
             </div>
             <p>
               Great food, good vibes. Always. Experience artisanal dining created with love and fresh
@@ -75,7 +75,7 @@ export default function Footer() {
               </li>
               <li>
                 <Mail size={14} />
-                <span>hello@antixorrestaurant.com</span>
+                <span>hello@StarPlusrestaurant.com</span>
               </li>
               <li>
                 <MapPin size={14} />
@@ -86,7 +86,7 @@ export default function Footer() {
         </div>
 
         <div className="footer__bottom">
-          <p>© 2026 Antixor Restaurant. All rights reserved.</p>
+          <p>© 2026 StarPlus Restaurant. All rights reserved.</p>
           <div className="footer__legal">
             <a href="#home">Privacy Policy</a>
             <span>•</span>
